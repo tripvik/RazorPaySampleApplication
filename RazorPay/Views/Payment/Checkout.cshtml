@@ -1,0 +1,39 @@
+﻿@model CheckoutModel
+
+@{
+    ViewData["Title"] = "Checkout Page";
+}
+
+<h1 class="mb-5">@ViewData["Title"]</h1>
+
+<h4><b>Your cart value is</b> ₹ @Model.Amount.ToString("0.00")</h4>
+<p>Plase enter the details to checkout</p>
+
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Payment">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Name</span>
+                    <input type="text" asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Phone</span>
+                    <input type="text" asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Email</span>
+                    <input type="text" asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="input-group">
+                    <input type="hidden" asp-for="Amount" />
+                    <input type="submit" value="Pay" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
